@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Thiết lập màu nền cho phần đầu trang */
+.a01 {
+    background-color: pink;
+    text-align: center; /* Căn giữa nội dung theo chiều ngang */
+    line-height: normal; /* Không thay đổi chiều cao dòng */
+}
+
+/* Thiết lập kiểu chữ và màu nền chung cho body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Thiết lập cho dòng sản phẩm */
+.product-row {
+    background-color: wheat;
+    display: flex; /* Sử dụng Flexbox để xếp các phần tử theo hàng */
+    justify-content: space-around; /* Tạo khoảng cách đều giữa các sản phẩm */
+    flex-wrap: wrap; /* Cho phép sản phẩm xuống hàng khi màn hình nhỏ */
+    padding: 20px;
+}
+
+/* Cấu hình khung sản phẩm */
+.product {
+    width: 200px;
+    height: 300px; /* Đặt chiều cao cố định cho khung */
+    margin: 10px; /* Khoảng cách giữa các sản phẩm */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden; /* Đảm bảo các nội dung không bị tràn ra ngoài */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hình ảnh sẽ vừa khít khung */
+.product img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Đảm bảo ảnh không bị méo */
+    transition: transform 0.3s; /* Hiệu ứng phóng to ảnh khi hover */
+}
+
+/* Hiệu ứng phóng to ảnh khi hover */
+.product:hover img {
+    transform: scale(1.1); /* Phóng to ảnh nhẹ khi hover */
+}
+
+/* Lớp phủ chứa thông tin sản phẩm */
+.product-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Lớp phủ tối màu */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    opacity: 0; /* Ẩn lớp phủ */
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+/* Hiển thị thông tin khi hover */
+.product:hover .product-info {
+    opacity: 1; /* Hiển thị lớp phủ */
+    visibility: visible;
+}
+
+/* Định dạng cho tiêu đề và mô tả sản phẩm */
+.product-info h3 {
+    margin: 0;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.product-info p {
+    font-size: 14px;
+    margin: 5px 0;
+    text-align: center;
+}
+
+/* Định dạng cho nút "Mua ngay" */
+.product-info button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.product-info button:hover {
+    background-color: #2980b9;
+}
+
+/* RESPONSIVE DESIGN */
+
+/* Trên màn hình nhỏ hơn 768px (điện thoại) */
+@media (max-width: 768px) {
+    .product-row {
+        flex-direction: column; /* Hiển thị sản phẩm theo cột */
+        align-items: center; /* Căn giữa sản phẩm */
+    }
+    .product {
+        width: 90%; /* Mỗi sản phẩm chiếm gần hết chiều rộng màn hình */
+        height: auto; /* Chiều cao tự động theo hình ảnh */
+    }
+}
+
+/* Trên màn hình lớn hơn 768px (laptop, desktop) */
+@media (min-width: 768px) {
+    .product-row {
+        justify-content: space-between; /* Các sản phẩm có khoảng cách đều nhau */
+    }
+    .product {
+        width: 200px; /* Chiều rộng cố định cho sản phẩm */
+        height: 300px; /* Chiều cao cố định cho sản phẩm */
+    }
+}
